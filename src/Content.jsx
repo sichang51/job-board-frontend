@@ -45,7 +45,6 @@ export function Content() {
         <JobsShow job={currentJob} />
       </Modal>
       <JobsNew onCreateJob={handleCreateJob} />
-      <JobsIndex jobs={jobs} />
     </div>
   );
 }
