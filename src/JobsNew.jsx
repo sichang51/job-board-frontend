@@ -25,9 +25,6 @@ export function JobsNew(props) {
           Location: <input name="location" type="text" />
         </div>
         <div>
-          Active: <input name="active" type="text" />
-        </div>
-        <div>
           Salary Range: <input name="salary_range" type="text" />
         </div>
         <button type="submit">Create job</button>
