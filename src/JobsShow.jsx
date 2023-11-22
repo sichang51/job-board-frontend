@@ -1,4 +1,8 @@
 export function JobsShow(props) {
+  const handleClick = () => {
+    props.onDestroyJob(props.job);
+  };
+
   return (
     <div>
       <h1>Job Info</h1>
@@ -9,6 +13,7 @@ export function JobsShow(props) {
       <p>Location: {props.job.location}</p>
       <p>Active: {props.job.active}</p>
       <p>Salary Range: {props.job.salary_range}</p>
+      <button onClick={handleClick}>Destroy Job</button>
     </div>
   );
 }
