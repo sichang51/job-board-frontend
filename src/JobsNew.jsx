@@ -1,8 +1,15 @@
-export function JobsNew() {
+export function JobsNew(props) {
+
+  const handleSubmit = {event} => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    props.onCreateJob(params, () => event.target.reset());
+  }
+
   return (
     <div>
       <h1>New Job</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           Company ID: <input name="company_id" type="text" />
         </div>
