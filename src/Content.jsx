@@ -21,31 +21,31 @@ export function Content() {
   const handleShowJob = (job) => {
     console.log("handleShowJob", job);
     setIsJobsShowVisible(true);
-    setCurrentJob(Job);
-
-    const handleClose = () => {
-      console.log("handleClose");
-      setIsJobsShowVisible(false);
-    };
-    const handleCreateJob = (params, successCallback) => {
-      console.log("handleCreateJob", params);
-      axios.post("http://localhost:3000/jobs.json", params).then((response) => {
-        setJobs([...jobs, response.data]);
-        successCallback;
-      });
-    };
-
-    useEffect(handleIndexJobs, []);
-
-    return (
-      <div>
-        <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
-        <Modal show={isJobsShowVisible} onClose={handleClose}>
-          <h1>Test</h1>
-        </Modal>
-        <JobsNew onCreateJob={handleCreateJob} />
-        <JobsIndex jobs={jobs} />
-      </div>
-    );
+    setCurrentJob(job);
   };
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsJobsShowVisible(false);
+  };
+  const handleCreateJob = (params, successCallback) => {
+    console.log("handleCreateJob", params);
+    axios.post("http://localhost:3000/jobs.json", params).then((response) => {
+      setJobs([...jobs, response.data]);
+      successCallback;
+    });
+  };
+
+  useEffect(handleIndexJobs, []);
+
+  return (
+    <div>
+      <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
+      <Modal show={isJobsShowVisible} onClose={handleClose}>
+        <h1>Test</h1>
+        <JobsShow job={currentJob} />
+      </Modal>
+      <JobsNew onCreateJob={handleCreateJob} />
+      <JobsIndex jobs={jobs} />
+    </div>
+  );
 }
