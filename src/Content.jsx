@@ -1,6 +1,7 @@
 import { JobsIndex } from "./JobsIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { JobsShow } from "./JobsShow";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -27,19 +28,14 @@ export function Content() {
     };
   };
 
-  return (
-    <Modal show={true}>
-      <h1>Test</h1>
-    </Modal>
-  
-
-
-
   useEffect(handleIndexJobs, []);
 
   return (
     <div>
-      <JobsIndex jobs={jobs} />
+      <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
+      <Modal show={isJobsShowVisible} onClose={handleClose}>
+        <h1>Test</h1>
+      </Modal>
     </div>
   );
 }
