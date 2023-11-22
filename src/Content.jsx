@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { JobsShow } from "./JobsShow";
 import { Modal } from "./Modal";
+import { JobsNew } from "./JobsNew";
 
 export function Content() {
   const [jobs, setJobs] = useState([]);
@@ -26,16 +27,25 @@ export function Content() {
       console.log("handleClose");
       setIsJobsShowVisible(false);
     };
+    const handleCreateJob = (params, successCallback) => {
+      console.log("handleCreateJob", params);
+      axios.post("http://localhost:3000/jobs.json", params).then((response) => {
+        setJobs([...jobs, response.data]);
+        successCallback;
+      });
+    };
+
+    useEffect(handleIndexJobs, []);
+
+    return (
+      <div>
+        <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
+        <Modal show={isJobsShowVisible} onClose={handleClose}>
+          <h1>Test</h1>
+        </Modal>
+        <JobsNew onCreateJob={handleCreateJob} />
+        <JobsIndex jobs={jobs} />
+      </div>
+    );
   };
-
-  useEffect(handleIndexJobs, []);
-
-  return (
-    <div>
-      <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
-      <Modal show={isJobsShowVisible} onClose={handleClose}>
-        <h1>Test</h1>
-      </Modal>
-    </div>
-  );
 }
