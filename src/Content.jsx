@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { JobsShow } from "./JobsShow";
 import { Modal } from "./Modal";
 import { JobsNew } from "./JobsNew";
+import { Signup } from "./Signup";
+import { Routes, Route } from "react-router-dom";
 
 export function Content() {
   const [jobs, setJobs] = useState([]);
@@ -66,12 +68,18 @@ export function Content() {
 
   return (
     <div className="container">
-      <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/jobs/new" element={<JobsNew onCreateJobs={handleCreateJob} />} />
+        <Route path="/jobs" element={<JobsIndex myJobs={jobs} onShowJob={handleShowJob} />} />
+        <Route path="/" element={<JobsIndex myJobs={jobs} onShowJob={handleShowJob} />} />
+      </Routes>
+      {/* <JobsIndex jobs={jobs} onShowJob={handleShowJob} /> */}
       <Modal show={isJobsShowVisible} onClose={handleClose}>
         <h1>Test</h1>
         <JobsShow job={currentJob} onUpdateJob={handleUpdateJob} onDestroyJob={handleDestroyJob} />
       </Modal>
-      <JobsNew onCreateJob={handleCreateJob} />
     </div>
   );
 }
