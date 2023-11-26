@@ -22,22 +22,16 @@ export function JobsShow(props) {
       <button onClick={handleClick}>Destroy Job</button>
       <form onSubmit={handleSubmit}>
         <div>
-          Company ID: <input defaultValue={props.job.company_id} name="Company ID" type="text" />
+          Company ID: <input defaultValue={props.job.company_id} name="company_id" type="text" />
         </div>
         <div>
-          Company Name: <input defaultValue={props.job.company.name} name="Company Name" type="text" />
+          Title: <input defaultValue={props.job.title} name="title" type="text" />
         </div>
         <div>
-          Title: <input defaultValue={props.job.title} name="Title" type="text" />
+          Description: <input defaultValue={props.job.description} name="description" type="text" />
         </div>
         <div>
-          Description: <input defaultValue={props.job.description} name="Description" type="text" />
-        </div>
-        <div>
-          URL: <input defaultValue={props.job.url} name="URL" type="text" />
-        </div>
-        <div>
-          Active: <input defaultValue={props.job.active} name="Active" type="text" />
+          URL: <input defaultValue={props.job.url} name="url" type="text" />
         </div>
         <button type="submit">Update Job</button>
       </form>

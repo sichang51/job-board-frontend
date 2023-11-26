@@ -65,7 +65,7 @@ export function Content() {
   useEffect(handleIndexJobs, []);
 
   return (
-    <div>
+    <div className="container">
       <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
       <Modal show={isJobsShowVisible} onClose={handleClose}>
         <h1>Test</h1>
