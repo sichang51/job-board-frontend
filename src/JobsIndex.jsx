@@ -3,7 +3,7 @@ export function JobsIndex(props) {
   return (
     <div>
       <h1>All Jobs</h1>
-      {props.jobs.map((job) => (
+      {props.myJobs.map((job) => (
         <div key={job.id}>
           <h2>{job.title}</h2>
           <h2>{job.company.name}</h2>
