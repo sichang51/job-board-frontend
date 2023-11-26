@@ -6,6 +6,7 @@ import { Modal } from "./Modal";
 import { JobsNew } from "./JobsNew";
 import { Signup } from "./Signup";
 import { Routes, Route } from "react-router-dom";
+import { Login } from "./Login";
 
 export function Content() {
   const [jobs, setJobs] = useState([]);
@@ -70,14 +71,14 @@ export function Content() {
     <div className="container">
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<Login />} />
         <Route path="/jobs/new" element={<JobsNew onCreateJobs={handleCreateJob} />} />
         <Route path="/jobs" element={<JobsIndex myJobs={jobs} onShowJob={handleShowJob} />} />
         <Route path="/" element={<JobsIndex myJobs={jobs} onShowJob={handleShowJob} />} />
       </Routes>
       {/* <JobsIndex jobs={jobs} onShowJob={handleShowJob} /> */}
       <Modal show={isJobsShowVisible} onClose={handleClose}>
-        <h1>Test</h1>
+        <h1>More Information</h1>
         <JobsShow job={currentJob} onUpdateJob={handleUpdateJob} onDestroyJob={handleDestroyJob} />
       </Modal>
     </div>
