@@ -1,4 +1,7 @@
 export function JobsShow(props) {
+  const handleClick = () => {
+    props.onDestroyJob(props.job);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
@@ -15,6 +18,7 @@ export function JobsShow(props) {
       <p>Location: {props.job.location}</p>
       <p>Active: {props.job.active}</p>
       <p>Salary Range: {props.job.salary_range}</p>
+      <button onClick={handleClick}>Destroy Job</button>
       <form onSubmit={handleSubmit}>
         <div>
           Company ID: <input defaultValue={props.job.company_id} name="Company ID" type="text" />
