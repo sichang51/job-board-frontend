@@ -13,6 +13,9 @@ export function JobsNew(props) {
           Company ID: <input name="company_id" type="text" />
         </div>
         <div>
+          Company Name: <input name="company.name" type="text" />
+        </div>
+        <div>
           Job Title: <input name="title" type="text" />
         </div>
         <div>

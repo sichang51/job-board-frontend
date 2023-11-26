@@ -12,6 +12,7 @@ export function JobsShow(props) {
     <div>
       <h1>Job Info</h1>
       <p>Company ID: {props.job.company_id}</p>
+      <p>Company Name: {props.job.company.name}</p>
       <p>Title: {props.job.title}</p>
       <p>Description: {props.job.description}</p>
       <p>URL: {props.job.url}</p>
@@ -22,6 +23,9 @@ export function JobsShow(props) {
       <form onSubmit={handleSubmit}>
         <div>
           Company ID: <input defaultValue={props.job.company_id} name="Company ID" type="text" />
+        </div>
+        <div>
+          Company Name: <input defaultValue={props.job.company.name} name="Company Name" type="text" />
         </div>
         <div>
           Title: <input defaultValue={props.job.title} name="Title" type="text" />
