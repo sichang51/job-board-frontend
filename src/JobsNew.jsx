@@ -1,6 +1,7 @@
 export function JobsNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const params = new FormData(event.target);
     props.onCreateJob(params, () => event.target.reset());
   };
